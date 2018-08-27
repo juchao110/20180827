@@ -1,15 +1,24 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
+/*
+ ****************************************首页模块****************************************
+ */
+// 首页
+const Index = r => require.ensure([], () => r(require('../pages/index/index.vue')), 'index')
 
 export default new Router({
-  routes: [
+  routes: [{
+      path: '',
+      redirect: '/index'
+    },
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      path: '*',
+      redirect: '/index'
+    }, {
+      path: '/index',
+      component: Index
     }
   ]
 })
